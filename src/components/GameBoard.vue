@@ -11,7 +11,7 @@
         :show-all="true"
       />
     </div>
-    <div class="grid-item item4"></div>
+    <div class="grid-item item4">Version: 1.0</div>
     <div class="grid-item item5"></div>
     <div class="grid-item item6"></div>
     <div class="grid-item item7">
@@ -373,7 +373,6 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 10px;
   width: 100vw;
   height: 100vh;
 }
@@ -386,6 +385,13 @@ onMounted(() => {
   overflow: hidden;
 }
 
+.item4 {
+  display: flex !important;
+  justify-content: end !important;
+  align-items: start !important;
+  padding-right: 25px !important;
+  color: blueviolet;
+}
 .item7 {
   overflow: hidden;
 }
