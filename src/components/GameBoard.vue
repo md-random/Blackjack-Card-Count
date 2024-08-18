@@ -11,7 +11,7 @@
         :show-all="true"
       />
     </div>
-    <div class="grid-item item4">Version: 1.0</div>
+    <div class="grid-item item4">Version: 1.1</div>
     <div class="grid-item item5"></div>
     <div class="grid-item item6"></div>
     <div class="grid-item item7">
@@ -232,7 +232,11 @@ const moveToNextHand = () => {
     gameState.value.currentActions = []
   } else {
     gameState.value.currentTurn = 'dealer'
-    dealerPlay()
+    if (!gameState.value.playerHands.every((hand) => isBusted(hand.cards))) {
+      dealerPlay()
+    } else {
+      endRound()
+    }
   }
 }
 
@@ -301,7 +305,10 @@ const endRound = () => {
 
     const playerValue = playerHand.value
 
-    if (
+    if (isBusted(playerHand.cards)) {
+      gameStatistics.value.losses++
+      logEntry.outcome = 'Bust'
+    } else if (
       isBlackjack(playerHand.cards) &&
       !isBlackjack(gameState.value.dealerHands[0].cards)
     ) {
@@ -310,9 +317,6 @@ const endRound = () => {
         2.5
       gameStatistics.value.wins++
       logEntry.outcome = 'Blackjack'
-    } else if (isBusted(playerHand.cards)) {
-      gameStatistics.value.losses++
-      logEntry.outcome = 'Bust'
     } else if (isBusted(gameState.value.dealerHands[0].cards)) {
       bettingState.value.bankroll +=
         (bettingState.value.currentBet / gameState.value.playerHands.length) * 2
