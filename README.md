@@ -20,6 +20,7 @@ This is a Vue 3 component that implements the classic casino game Blackjack. It 
 
 - Version 1.0: Initial release with basic Blackjack gameplay
 - Version 1.1: Fixed dealer action on player bust and revealed dealer's hidden card when player busts
+- Version 1.2: Improved game state management, fixed dealer card visibility, and corrected action logging
 
 ## Logic and Function Explanations
 
@@ -57,6 +58,13 @@ You can customize the game by modifying the following:
 - Number of decks used
 - Blackjack payout ratio
 - Dealer hit/stand on soft 17 rule
+
+## Version 1.2 Updates
+
+- Refactored game state management using Vue 3 Composition API for improved performance and maintainability
+- Fixed issues with dealer card visibility during gameplay
+- Corrected action logging to accurately reflect player decisions, especially for double down actions
+- Enhanced overall game stability and resolved freezing issues after multiple hands
 
 ## Future Improvements
 
